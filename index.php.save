@@ -1,0 +1,19 @@
+<html>
+ <head>
+  <title>PHP Test</title>
+ </head>
+ <body>
+ <?php 	$url = "https://fierce-fortress-16535.herokuapp.com/score";
+	$client = curl_init($url);
+	$response = curl_exec($client);
+	$result = json_decode($response);
+
+	echo "<table>";
+	echo "<tr><td>Wins: </td><td>$result->wins</td></tr>";
+$get_data = callAPI('GET', 'https://api.example.com/get_url/'.$user['User']['customer_id'], false);
+$response = json_decode($get_data, true);
+$errors = $response['response']['errors'];
+$data = $response['response']['data'][0];	echo "</table">	
+?>
+ </body>
+</html>
