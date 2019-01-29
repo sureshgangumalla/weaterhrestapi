@@ -14,8 +14,8 @@ public class WeatherService {
 	private float temperature;
 
 	@RequestMapping(value = "/weather/city", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getWeather() {
-
+	public String getWeather(String city) {
+        this.city = city;
 		WeatherAPI weatherAPI = new WeatherAPI();
 		String[] resString = weatherAPI.getWeather(this.city);
 		String json,pattern;
@@ -38,5 +38,13 @@ public class WeatherService {
 		
 		return String.format(pattern,city);
 	}
+	
+	@RequestMapping(value="/weather/city", method=RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE)
+	  public String updateScore(String city) {
+	     this.city = city;
+	     String pattern = "{\"city\":\"%s\"}";
+			
+			return String.format(pattern,city);
+	   }
 
 }
